@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="main">
+  <form method="POST" action="{% url 'getweather' %}">
+    {% csrf_token %}
+    <p>City name : </p>
+    <input type="text" name="city_name">
+    <br>
+    <input type="submit" value="Get weather">
+  </form>
+</div>
+
+<div class="weather-information">
+  <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png">
+  <p>{{ city_weather.city_name }}</p>
+  <p>{{ city_weather.temperature }}</p>
+  <p>{{ city_weather.description }}</p>
+</div>
+
+{% endblock %}
